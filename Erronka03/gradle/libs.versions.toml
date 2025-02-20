@@ -1,0 +1,31 @@
+[versions]
+agp = "8.8.1"
+androidActivation = "1.6.7"
+androidMail = "1.6.7"
+firebaseAuth = "23.2.0"
+firebaseFirestore = "25.1.2"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+appcompat = "1.7.0"
+material = "1.12.0"
+activity = "1.10.0"
+constraintlayout = "2.2.0"
+
+[libraries]
+android-mail = { module = "com.sun.mail:android-mail", version.ref = "androidMail" }
+firebase-auth = { module = "com.google.firebase:firebase-auth", version.ref = "firebaseAuth" }
+firebase-firestore = { module = "com.google.firebase:firebase-firestore", version.ref = "firebaseFirestore" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+mail-android-activation = { module = "com.sun.mail:android-activation", version.ref = "androidActivation" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+javamail = { module = "com.sun.mail:android-mail", version = "1.6.7" }
+activation = { module = "com.sun.mail:android-activation", version = "1.6.7" }
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+
