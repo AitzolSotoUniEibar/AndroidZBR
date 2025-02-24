@@ -1,9 +1,10 @@
 package com.example.erronka03;
 
 public class Erabiltzailea {
-    String erabiltzailea;
-    String emaila;
-    String pasahitza;
+    private int id;
+    private String erabiltzailea;
+    private String emaila;
+    private String pasahitza;
 
     public Erabiltzailea(String erabiltzailea,String emaila){
         this.emaila = emaila;

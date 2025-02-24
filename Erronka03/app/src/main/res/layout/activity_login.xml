@@ -39,7 +39,7 @@
         app:layout_constraintTop_toBottomOf="@+id/etPasahitza" />
 
     <EditText
-        android:id="@+id/etKode"
+        android:id="@+id/etErabiltzailea"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="55dp"
@@ -62,8 +62,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Erabiltzailea"
-        app:layout_constraintBottom_toTopOf="@+id/etKode"
-        app:layout_constraintStart_toStartOf="@+id/etKode"
+        app:layout_constraintBottom_toTopOf="@+id/etErabiltzailea"
+        app:layout_constraintStart_toStartOf="@+id/etErabiltzailea"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
@@ -96,7 +96,7 @@
         android:text="Pasahitza"
         app:layout_constraintBottom_toTopOf="@+id/etPasahitza"
         app:layout_constraintStart_toStartOf="@+id/etPasahitza"
-        app:layout_constraintTop_toBottomOf="@+id/etKode" />
+        app:layout_constraintTop_toBottomOf="@+id/etErabiltzailea" />
 
     <ImageView
         android:id="@+id/imageView2"

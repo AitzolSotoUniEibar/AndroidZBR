@@ -29,8 +29,8 @@ public class ErregistratuActivity extends AppCompatActivity {
             return insets;
         });
 
-        etErabiltzailea = findViewById(R.id.etKode);
-        etEmaila = findViewById(R.id.etKode);
+        etErabiltzailea = findViewById(R.id.etErabiltzailea);
+        etEmaila = findViewById(R.id.etEmaila);
         etPasahitza = findViewById(R.id.etPasahitza);
         etPasahitza2 = findViewById(R.id.etPasahitza2);
         dbHelper = new DatabaseHelper(this);

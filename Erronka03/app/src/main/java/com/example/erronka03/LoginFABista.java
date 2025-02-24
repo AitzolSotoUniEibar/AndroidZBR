@@ -37,7 +37,7 @@ public class LoginFABista extends AppCompatActivity {
     }
 
     public void KodeEgiaztatu(View view){
-        etKode = findViewById(R.id.etKode);
+        etKode = findViewById(R.id.etErabiltzailea);
         String kodeInput = etKode.getText().toString();
         Toast.makeText(this,kodeZuzena,Toast.LENGTH_SHORT).show();
         if(kodeInput.equals(kodeZuzena)){//Login egin

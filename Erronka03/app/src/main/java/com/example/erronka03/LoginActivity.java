@@ -35,10 +35,16 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         dbHelper = new DatabaseHelper(this);
-        etErabiltzailea = findViewById(R.id.etKode);
+        etErabiltzailea = findViewById(R.id.etErabiltzailea);
         etPasahitza = findViewById(R.id.etPasahitza);
 
         LoginKonprobatu();
+
+        DatabaseHelper databaseHelper = new DatabaseHelper(this);
+        databaseHelper.produktuakSortu();
+        //databaseHelper.produktuakEzabatu();
+        databaseHelper.konektatu();
+
     }
 
 
@@ -97,7 +103,6 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    // Generar un código de verificación de 6 dígitos
     private String generateVerificationCode() {
         Random random = new Random();
         int code = 100000 + random.nextInt(900000); // Código de 6 dígitos

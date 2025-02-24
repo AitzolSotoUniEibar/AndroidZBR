@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +26,12 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        ListView produktuakList = findViewById(R.id.produktuakList);
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
+
+        List<Produktua> produktuak = dbHelper.getAllProduktuak();//Produktuak jaso
+        ProduktuaAdapter produktuaAdapter = new ProduktuaAdapter(this,produktuak);//Adapter sortu eta produktuak pasatu
+        produktuakList.setAdapter(produktuaAdapter);//Produktuak erakutsi
     }
 
 
