@@ -102,10 +102,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db1.rawQuery("SELECT * FROM produktuak", null);
         if(cursor.getCount() <= 0){//Ez badago produkturik produktuak sortu
             String insertQuery = "INSERT INTO produktuak (izena, deskripzioa, prezioa, irudia) VALUES " +
-                    "('Galleta de Chocolate', 'Galleta crujiente con trozos de chocolate', 1.50, 'zabalaprod1.jpg'), " +
-                    "('Galleta de Avena', 'Galleta saludable con avena y miel', 1.20, 'zabalaprod1.jpg'), " +
-                    "('Galleta de Mantequilla', 'Galleta clásica con mantequilla de alta calidad', 1.00, 'zabalaprod1.jpg'), " +
-                    "('Galleta de Almendra', 'Galleta artesanal con almendras tostadas', 1.80, 'zabalaprod1.jpg');";
+                    "('Txokolatezko gaileta', 'Txokolate zatiak dituen gaileta', 1.50, 'zabalaprod1.jpg'), " +
+                    "('Olo gaileta', 'Oloa eta eztiarekin egindako gaileta', 1.20, 'avena.jpg'), " +
+                    "('Gurinezko gaileta', 'Gurinarekin egindako gaileta klasikoa', 1.00, 'mantequilla.jpg'), " +
+                    "('Almendrazko gaileta', 'Almendrekin egindako gaileta', 1.80, 'almendra.jpg');";
             db1.execSQL(insertQuery);
         }
         db1.close();
