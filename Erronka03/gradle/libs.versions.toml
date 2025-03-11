@@ -11,6 +11,7 @@ appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.10.0"
 constraintlayout = "2.2.0"
+bcrypt = "0.10.2"
 
 [libraries]
 android-mail = { module = "com.sun.mail:android-mail", version.ref = "androidMail" }
@@ -26,6 +27,7 @@ activity = { group = "androidx.activity", name = "activity", version.ref = "acti
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 javamail = { module = "com.sun.mail:android-mail", version = "1.6.7" }
 activation = { module = "com.sun.mail:android-activation", version = "1.6.7" }
+bcrypt = { module = "at.favre.lib:bcrypt", version.ref = "bcrypt" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 

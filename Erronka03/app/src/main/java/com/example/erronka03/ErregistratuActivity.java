@@ -12,6 +12,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+
 public class ErregistratuActivity extends AppCompatActivity {
     private DatabaseHelper dbHelper;
     private EditText etErabiltzailea;
@@ -36,14 +37,23 @@ public class ErregistratuActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
     }
 
-    public void Erregistratu(View view){
-        String emaila = etEmaila.getText().toString();
-        if(!dbHelper.erabiltzaileaExistitzenDa(emaila)) {
+    public void Erregistratu(View view) throws Exception {
+        String erabiltzaileIzena= etErabiltzailea.getText().toString();
+
+        if(!dbHelper.erabiltzaileaExistitzenDa(erabiltzaileIzena)) {
             String erabiltzailea = etErabiltzailea.getText().toString();
             String pasahitza = etPasahitza.getText().toString();
             String pasahitza2 = etPasahitza2.getText().toString();
+
+            //Datuen konprobazioa
+            if(!(pasahitza.length() > 8)){
+                Toast.makeText(this, "Pasahitzak 8 karaktere izan behar ditu", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             if(!erabiltzailea.isEmpty() && !pasahitza.isEmpty() && !pasahitza2.isEmpty()){//Datuak dbn gorde
-                dbHelper.erabiltzaileaGorde(emaila,erabiltzailea,pasahitza);
+                pasahitza = SecurityUtils.hashPassword(pasahitza);//Pasahitza hasheatu
+                dbHelper.erabiltzaileaGorde(erabiltzaileIzena,erabiltzailea,pasahitza);
                 Toast.makeText(this, "Datuak gorde dira", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(this,LoginActivity.class);
                 startActivity(i);

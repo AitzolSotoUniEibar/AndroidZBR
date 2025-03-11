@@ -64,10 +64,10 @@ public class LoginActivity extends AppCompatActivity {
     public void SaioaHasi(View view){
         String erabiltzaileaInput = etErabiltzailea.getText().toString();
         String pasahitza = etPasahitza.getText().toString();
-        if(!erabiltzaileaInput.isEmpty() && !pasahitza.isEmpty()){
-            Erabiltzailea erabiltzailea1 = dbHelper.saioaHasi(erabiltzaileaInput,pasahitza);
-            if(erabiltzailea1 != null){
-                String userEmaila = erabiltzailea1.getEmaila();
+        if(!erabiltzaileaInput.isEmpty() && !pasahitza.isEmpty()){//Datuak sartu dituen konprobatu
+            Erabiltzailea erabiltzailea1 = dbHelper.erabiltzaileaKonprobatu(erabiltzaileaInput);//Sartu den erabiltzailea existitzen den konprobatu
+            if(erabiltzailea1 != null && SecurityUtils.verifyPassword(pasahitza,erabiltzailea1.getPasahitza())){//Erabiltzailea badago, pasahitza konprobatu
+                String userEmaila = erabiltzailea1.getEmaila();//2FA autentikazioa
                 generatedCode = generateVerificationCode();
                 ExecutorService executor = Executors.newSingleThreadExecutor();
                 executor.execute(() -> {
@@ -76,8 +76,8 @@ public class LoginActivity extends AppCompatActivity {
                         mailSender.sendMail(userEmaila, "Código de verificación", "Tu código es: " + generatedCode);
 
 
-                        runOnUiThread(() -> {
-                            Toast.makeText(LoginActivity.this, "Código enviado con éxito", Toast.LENGTH_LONG).show();
+                        runOnUiThread(() -> { //Kodea bidali
+                            Toast.makeText(LoginActivity.this, "Kodea bidali da", Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(LoginActivity.this, LoginFABista.class);
                             intent.putExtra("userEmail", erabiltzailea1.getEmaila());
                             intent.putExtra("erabiltzailea",erabiltzaileaInput);
@@ -105,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private String generateVerificationCode() {
         Random random = new Random();
-        int code = 100000 + random.nextInt(900000); // Código de 6 dígitos
+        int code = 100000 + random.nextInt(900000);
         return String.valueOf(code);
     }
 

@@ -48,27 +48,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public Erabiltzailea saioaHasi(String erabiltzailea,String pasahitza){
+    public Erabiltzailea erabiltzaileaKonprobatu(String erabiltzailea){
 
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM erabiltzaileak WHERE erabiltzailea=? AND pasahitza=?", new String[]{erabiltzailea,pasahitza});
+        Cursor cursor = db.rawQuery("SELECT * FROM erabiltzaileak WHERE erabiltzailea=?", new String[]{erabiltzailea});
 
         Erabiltzailea erabiltzaile = null;
 
         if (cursor.moveToFirst()) {
             int emailIndex = cursor.getColumnIndex("emaila");
             int erabiltzaileaIndex = cursor.getColumnIndex("erabiltzailea");
+            int pasahitzaIndex = cursor.getColumnIndex("pasahitza");
+
             String email = cursor.getString(emailIndex);
             String user = cursor.getString(erabiltzaileaIndex);
-            erabiltzaile = new Erabiltzailea(user, email);
+            String ePasahitza = cursor.getString(pasahitzaIndex);
+
+            erabiltzaile = new Erabiltzailea(user, email, ePasahitza);
         }
         cursor.close();
         return erabiltzaile;
     }
 
-    public boolean erabiltzaileaExistitzenDa(String emaila){
+    public boolean erabiltzaileaExistitzenDa(String erabiltzailea){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM erabiltzaileak WHERE emaila=?", new String[]{emaila});
+        Cursor cursor = db.rawQuery("SELECT * FROM erabiltzaileak WHERE erabiltzailea=?", new String[]{erabiltzailea});
         boolean existitzenDa = cursor.getCount() > 0;
         cursor.close();
         return existitzenDa;

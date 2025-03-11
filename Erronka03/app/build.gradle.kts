@@ -41,6 +41,7 @@ android {
 
 dependencies {
     implementation(libs.javamail)
+    implementation(libs.bcrypt)
     implementation(libs.activation)
     implementation(libs.appcompat)
     implementation(libs.material)

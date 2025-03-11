@@ -6,9 +6,10 @@ public class Erabiltzailea {
     private String emaila;
     private String pasahitza;
 
-    public Erabiltzailea(String erabiltzailea,String emaila){
+    public Erabiltzailea(String erabiltzailea,String emaila ,String pasahitza){
         this.emaila = emaila;
         this.erabiltzailea = erabiltzailea;
+        this.pasahitza = pasahitza;
     }
 
     public String getErabiltzailea(){
@@ -17,5 +18,9 @@ public class Erabiltzailea {
 
     public String getEmaila(){
         return this.emaila;
+    }
+
+    public String getPasahitza() {
+        return pasahitza;
     }
 }
