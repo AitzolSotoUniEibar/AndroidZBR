@@ -40,18 +40,24 @@ public class ErregistratuActivity extends AppCompatActivity {
     public void Erregistratu(View view) throws Exception {
         String erabiltzaileIzena= etErabiltzailea.getText().toString();
 
-        if(!dbHelper.erabiltzaileaExistitzenDa(erabiltzaileIzena)) {
+        //Erabiltzaile izena ez bada existitzen
             String erabiltzailea = etErabiltzailea.getText().toString();
+            String emaila = etEmaila.getText().toString();
             String pasahitza = etPasahitza.getText().toString();
             String pasahitza2 = etPasahitza2.getText().toString();
 
             //Datuen konprobazioa
+            if(dbHelper.erabiltzaileaExistitzenDa(erabiltzaileIzena)) {
+                Toast.makeText(this, "Erabiltzailea existitzen da", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             if(!(pasahitza.length() > 8)){
                 Toast.makeText(this, "Pasahitzak 8 karaktere izan behar ditu", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            if(!erabiltzailea.isEmpty() && !pasahitza.isEmpty() && !pasahitza2.isEmpty()){//Datuak dbn gorde
+            if(!erabiltzailea.isEmpty() && !emaila.isEmpty() && !pasahitza2.isEmpty()){//Datuak dbn gorde
                 pasahitza = SecurityUtils.hashPassword(pasahitza);//Pasahitza hasheatu
                 dbHelper.erabiltzaileaGorde(erabiltzaileIzena,erabiltzailea,pasahitza);
                 Toast.makeText(this, "Datuak gorde dira", Toast.LENGTH_SHORT).show();
@@ -60,8 +66,6 @@ public class ErregistratuActivity extends AppCompatActivity {
             }else{
                 Toast.makeText(this, "Datuak falta dira", Toast.LENGTH_SHORT).show();
             }
-        }else{
-            Toast.makeText(this, "Erabiltzailea existitzen da", Toast.LENGTH_SHORT).show();
-        }
+
     }
 }
