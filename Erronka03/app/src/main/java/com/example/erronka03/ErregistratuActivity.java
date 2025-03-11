@@ -59,7 +59,7 @@ public class ErregistratuActivity extends AppCompatActivity {
 
             if(!erabiltzailea.isEmpty() && !emaila.isEmpty() && !pasahitza2.isEmpty()){//Datuak dbn gorde
                 pasahitza = SecurityUtils.hashPassword(pasahitza);//Pasahitza hasheatu
-                dbHelper.erabiltzaileaGorde(erabiltzaileIzena,erabiltzailea,pasahitza);
+                dbHelper.erabiltzaileaGorde(emaila,erabiltzailea,pasahitza);
                 Toast.makeText(this, "Datuak gorde dira", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(this,LoginActivity.class);
                 startActivity(i);
